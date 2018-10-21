@@ -1,0 +1,60 @@
+While 0
+ eSELECT.basic
+ by Efe Ozturkoglu
+ Allows the user to select an area of the screen
+ and outputs it to the variables X, Y, W, H
+ for use by other scripts.
+End
+
+
+Lbl AN
+Menu("Select Mode", "Preset", P, "Custom", C, "Current", U, "Cancel", X)
+Return
+
+Lbl C
+Input
+X->Q
+Y->I
+Input
+abs(X-Q)->W
+abs(Y-I)->H
+min(X,Q)->X
+max(Y,I)->Y
+Return
+
+Lbl P
+Menu("Selection Size:", "Full Screen", PA, "Left Half", PB, "Right Half", PC, "Top Half", PD, "Bottom Half", PE, "Back", AN)
+
+Lbl PA
+Xmin->X
+Ymax->Y
+abs(Xmax-Xmin)->W
+abs(Ymax-Ymin)->H
+Return
+
+Lbl PB
+Xmin->X
+Ymax->Y
+abs(Xmax-Xmin)/2->W
+abs(Ymax-Ymin)->H
+Return
+
+Lbl PC
+Xmin+1+(abs(Xmax-Xmin)/2)->X
+Ymax->Y
+(abs(Xmax-Xmin)/2)->W
+abs(Ymax-Ymin)->H
+Return
+
+Lbl PD
+Xmin->X
+Ymax->Y
+abs(Xmax-Xmin)->W
+abs(Ymax-Ymin)/2->H
+Return
+
+Lbl U
+Return
+
+Lbl X
+Stop
