@@ -1,0 +1,67 @@
+While 0
+ fCOPY.basic
+ by Efe Ozturkoglu
+ Copies/moves a selected part of the image 
+ to another part of the screen.
+End
+
+
+Input
+X->Q
+Y->I
+Input
+abs(X-Q)->W
+abs(I-Y)->H
+min(X,Q)->Q
+max(Y,I)->I
+Input
+Q-X->A
+Y-I->B
+Disp "Delete original"
+Disp "1/0 = yes/no"
+Prompt D
+Q->X
+I->Y
+
+
+
+If B>0
+Goto A
+If B<0
+Goto B
+If A>0
+Goto A
+If A<0
+Goto B
+Return
+
+Lbl A
+For(I,62-Y,62-Y+H)
+For(Q,X,X+W)
+
+pxl-Test(I,Q)->L
+
+If D=1
+Pt-Off(Q,62-I)
+If L=0
+Pt-Off(Q-A,62-I+B)
+If L=1
+Pt-On(Q-A,62-I+B)
+
+End
+End
+
+Lbl B
+For(I,Y-H,Y)
+For(Q,94-X-W,94-X)
+
+pxl-Test(62-I,94-Q)->L
+If D=1
+Pt-Off(94-Q,I)
+If L=0
+Pt-Off(94-Q-A,I+B)
+If L=1
+Pt-On(94-Q-A,I+B)
+
+End
+End
