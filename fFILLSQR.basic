@@ -1,0 +1,46 @@
+While 0
+ fFILLSQUARE.basic
+ by Efe Ozturkoglu
+ Allows the user to select a portion of the screen
+ where a black, white, or inverted rectangle will
+ be drawn.
+End
+
+
+While 1
+Disp "Choose color"
+Disp "0 White"
+Disp "1 Black"
+Disp "2 Invert"
+
+Prompt C
+Disp C
+prgmESELECT
+If C=0
+Then
+For(I,Y-H,Y)
+For(Q,X,X+W)
+Pt-Off(Q,I)
+End
+End
+End
+
+If C=1
+Then
+For(I,Y-H,Y)
+For(Q,X,X+W)
+Pt-On(Q,I)
+End
+End
+End
+
+If C=2
+Then
+For(I,Y-H,Y)
+For(Q,X,X+W)
+Pt-Change(Q,I)
+End
+End
+End
+
+End
